@@ -1,4 +1,61 @@
-<h1 class="text-3xl font-bold underline text-blue-500">
-  Hello, Tailwind with Angular!
-</h1>
+<nav class="rounded-lg border shadow-lg overflow-hidden p-2 bg-white border-stone-200 shadow-stone-950/5 mx-auto w-full max-w-screen-xl">
+  <div class="flex items-center">
+    <!-- Logo -->
+    <a href="#" class="font-sans antialiased text-lg text-current ml-2 mr-4 block font-semibold">MyShop</a>
 
+    <!-- Navigation Links -->
+    <ul class="hidden lg:flex flex-row gap-x-6 items-center">
+      <li>
+        <a href="#" class="font-sans antialiased text-sm text-current hover:text-primary font-medium">Homme</a>
+      </li>
+      <li>
+        <a href="#" class="font-sans antialiased text-sm text-current hover:text-primary font-medium">Femme</a>
+      </li>
+      <li>
+        <a href="#" class="font-sans antialiased text-sm text-current hover:text-primary font-medium">Enfants</a>
+      </li>
+    </ul>
+
+    <!-- Spacer -->
+    <div class="flex-1"></div>
+
+    <!-- Search Bar -->
+    <div class="relative hidden lg:block w-64">
+      <input placeholder="Rechercher..." type="search" class="w-full text-stone-800 placeholder:text-stone-600 border border-stone-300 rounded-lg py-2 px-4 focus:outline-none focus:ring-2 focus:ring-stone-400" />
+      <span class="absolute top-1/2 right-3 -translate-y-1/2 text-stone-600">
+        <svg width="1.5em" height="1.5em" viewBox="0 0 24 24" stroke-width="1.5" fill="none" xmlns="http://www.w3.org/2000/svg" color="currentColor">
+          <path d="M17 17L21 21" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
+          <path d="M3 11C3 15.4183 6.58172 19 11 19C13.213 19 15.2161 18.1015 16.6644 16.6493C18.1077 15.2022 19 13.2053 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+      </span>
+    </div>
+
+    <!-- Account and Cart -->
+    <div class="hidden lg:flex items-center gap-x-4">
+      <a href="#" class="text-stone-800 hover:text-primary font-medium flex items-center">
+        <svg width="1.5em" height="1.5em" viewBox="0 0 24 24" stroke-width="1.5" fill="none" xmlns="http://www.w3.org/2000/svg" color="currentColor" class="mr-1">
+          <path d="M12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
+          <path d="M4.271 18.3457C4.271 18.3457 6.50002 15.5 12 15.5C17.5 15.5 19.7291 18.3457 19.7291 18.3457" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
+          <path d="M12 12C13.6569 12 15 10.6569 15 9C15 7.34315 13.6569 6 12 6C10.3431 6 9 7.34315 9 9C9 10.6569 10.3431 12 12 12Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+        Mon Compte
+      </a>
+      <a href="#" class="text-stone-800 hover:text-primary font-medium flex items-center">
+        <svg width="1.5em" height="1.5em" viewBox="0 0 24 24" stroke-width="1.5" fill="none" xmlns="http://www.w3.org/2000/svg" color="currentColor" class="mr-1">
+          <path d="M7 18H10.5H14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
+          <path d="M7 2L16.5 2L21 6.5V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V6.5L7 2Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+        Panier
+      </a>
+    </div>
+
+    <!-- Mobile Menu Button -->
+    <button class="ml-4 lg:hidden">
+      <svg width="1.5em" height="1.5em" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="currentColor">
+        <path d="M3 5H21" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
+        <path d="M3 12H21" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
+        <path d="M3 19H21" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+    </button>
+  </div>
+</nav>

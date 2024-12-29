@@ -1,0 +1,15 @@
+.homepage-container {
+  font-family: 'Arial', sans-serif;
+}
+
+.hero {
+  min-height: 50vh;
+}
+
+.category-card img {
+  transition: transform 0.3s ease-in-out;
+}
+
+.category-card:hover img {
+  transform: scale(1.05);
+}
