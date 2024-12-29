@@ -1,4 +1,3 @@
-
 {
   "openapi": "3.0.0",
   "info": {
@@ -86,6 +85,89 @@
           },
           "404": {
             "description": "Product not found"
+          }
+        }
+      }
+    },
+    "/api/users/register": {
+      "post": {
+        "summary": "Register a user",
+        "responses": {
+          "201": {
+            "description": "User registered"
+          }
+        }
+      }
+    },
+    "/api/users/login": {
+      "post": {
+        "summary": "Authenticate user",
+        "responses": {
+          "200": {
+            "description": "User authenticated"
+          },
+          "401": {
+            "description": "Invalid credentials"
+          }
+        }
+      }
+    },
+    "/api/cart": {
+      "post": {
+        "summary": "Add item to cart",
+        "responses": {
+          "201": {
+            "description": "Item added to cart"
+          }
+        }
+      }
+    },
+    "/api/cart/{userId}": {
+      "get": {
+        "summary": "Get cart items for a user",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of cart items"
+          }
+        }
+      }
+    },
+    "/api/orders": {
+      "post": {
+        "summary": "Create an order",
+        "responses": {
+          "201": {
+            "description": "Order created"
+          }
+        }
+      }
+    },
+    "/api/orders/{userId}": {
+      "get": {
+        "summary": "Get orders for a user",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of orders"
           }
         }
       }
