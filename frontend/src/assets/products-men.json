@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "name": "Chemise Classique",
+    "price": 29.99,
+    "image": "assets/men/shirt1.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Chaussures Élégantes",
+    "price": 49.99,
+    "image": "assets/men/shoes1.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Blouson en Cuir",
+    "price": 89.99,
+    "image": "assets/men/jacket1.jpg"
+  }
+]
