@@ -1,37 +1,38 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
-import { CommonModule} from '@angular/common';
-import { NgModule} from '@angular/core';
-import { Product } from '../models/product'; // Importer le modèle Product
-
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { Product } from '../models/product';
+import { CartItem } from '../models/CartItem';
 
 @Component({
   selector: 'app-cart-page',
   imports: [CommonModule],
+  standalone: true,
   templateUrl: './cart-page.component.html',
   styleUrls: ['./cart-page.component.css']
 })
 export class CartPageComponent implements OnInit {
-  cartItems: Product[] = []; // Utiliser Product pour les éléments du panier
-  total: number = 0; // Variable pour afficher le total du panier
-  userId: number = 1; // L'ID de l'utilisateur actuel (à remplacer par l'ID réel de l'utilisateur dans la session)
+  cartItems: CartItem[] = [];
+  total: number = 0;
+  userId: number = 1;
 
   constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {
-    // Appel API pour récupérer les éléments du panier et filtrer par userId
     this.loadCart();
   }
 
-  // Récupérer les éléments du panier depuis l'API
   loadCart(): void {
     this.apiService.getCartItems().subscribe(
-      (cartItems: any[]) => {
-        // Filtrer les articles en fonction de l'ID de l'utilisateur actuel
+      (cartItems: CartItem[]) => {
         this.cartItems = cartItems
-          .filter(item => item.userId === this.userId) // Filtre sur userId
-          .map(item => item.product); // Nous extrayons seulement la propriété 'product' de chaque élément
-
+          .filter(item => item.userId === this.userId)
+          .map(item => ({
+            ...item,
+            product: item.Product
+          }));
+        console.log(cartItems);
         this.calculateTotal();
       },
       (error) => {
@@ -42,7 +43,8 @@ export class CartPageComponent implements OnInit {
 
   // Calculer le total du panier
   calculateTotal(): void {
-    this.total = this.cartItems.reduce((sum, item) => sum + item.price, 0);
+    console.log(this.cartItems[0].Product)
+    this.total = this.cartItems.reduce((sum, item) => sum + (item.Product.price * item.quantity), 0);
   }
 
   // Méthode pour supprimer un article du panier
