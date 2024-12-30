@@ -74,6 +74,8 @@ This page lists all available endpoints with their request and response structur
 ### Key Endpoints
 #### Products
 - **GET** `/api/products` - Retrieve all products
+  ![image](https://github.com/user-attachments/assets/9039ee37-426f-4eab-94dc-16f7fab0f348)
+
 - **POST** `/api/products` - Add a new product
 - **PUT** `/api/products/:id` - Update a product
 - **DELETE** `/api/products/:id` - Delete a product
