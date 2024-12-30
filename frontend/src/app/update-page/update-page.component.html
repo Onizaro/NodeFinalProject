@@ -1,0 +1,19 @@
+<div class="update-page">
+  <h1>Ajouter un produit</h1>
+
+  <form (submit)="onSubmit()">
+    <label for="productId">ID</label>
+    <input type="number" id="productId" [(ngModel)]="productId" name="productId" required />
+
+    <label for="productName">Nom</label>
+    <input type="text" id="productName" [(ngModel)]="productName" name="productName" required />
+
+    <label for="productPrice">Prix</label>
+    <input type="number" id="productPrice" [(ngModel)]="productPrice" name="productPrice" required />
+
+    <label for="productDescription">Description</label>
+    <input type="text" id="productDescription" [(ngModel)]="productDescription" name="productDescription" required />
+
+    <button type="submit">Ajouter le produit</button>
+  </form>
+</div>

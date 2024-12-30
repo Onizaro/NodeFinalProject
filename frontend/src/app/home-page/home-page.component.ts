@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { NavbarComponent} from '../navbar/navbar.component';
 import {NgOptimizedImage} from '@angular/common';
 
+
 @Component({
   selector: 'app-home-page',
   imports: [

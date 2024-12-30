@@ -8,6 +8,7 @@ import { WomenPageComponent } from './women-page/women-page.component';
 import { ChildrenPageComponent } from './children-page/children-page.component';
 import { CartPageComponent } from './cart-page/cart-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
+import { UpdatePageComponent } from './update-page/update-page.component';
 
 
 export const routes: Routes = [
@@ -17,5 +18,6 @@ export const routes: Routes = [
   { path: 'kids', component: ChildrenPageComponent },
   { path: 'cart', component: CartPageComponent },
   { path: 'login', component: LoginPageComponent },
+  { path: 'update', component: UpdatePageComponent },
 ];
 
