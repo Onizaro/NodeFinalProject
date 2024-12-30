@@ -7,8 +7,8 @@ import {CartPageComponent} from './cart-page/cart-page.component'
 
 export const routes: Routes = [
   {path: '', component: HomePageComponent},
-  {path: 'homme', component: MenPageComponent},
-  {path: 'femme', component: WomenPageComponent},
-  {path: 'enfants', component: ChildrenPageComponent},
-  {path: 'panier', component: CartPageComponent},
+  {path: 'men', component: MenPageComponent},
+  {path: 'women', component: WomenPageComponent},
+  {path: 'kids', component: ChildrenPageComponent},
+  {path: 'cart', component: CartPageComponent},
 ];

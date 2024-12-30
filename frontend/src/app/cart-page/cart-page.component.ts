@@ -2,9 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { CartService } from '../cart.service';
 import { Product } from '../product.service';
 import { ProductService } from '../product.service';
+import { CommonModule} from '@angular/common';
+import { NgModule} from '@angular/core';
 
 @Component({
   selector: 'app-cart-page',
+  imports: [CommonModule],
   templateUrl: './cart-page.component.html',
   styleUrls: ['./cart-page.component.css']
 })

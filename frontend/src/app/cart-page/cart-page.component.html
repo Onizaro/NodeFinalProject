@@ -1,11 +1,11 @@
 <div class="cart-page-container bg-gray-50 text-stone-900 p-6">
   <div class="cart-header text-center p-12 bg-blue-400 text-white rounded-lg">
-    <h1 class="text-4xl font-bold mb-4">Votre Panier</h1>
-    <p class="text-lg">Consultez et gérez les articles dans votre panier</p>
+    <h1 class="text-4xl font-bold mb-4">Your Cart</h1>
+    <p class="text-lg">Review and manage the items in your cart</p>
   </div>
 
   <div *ngIf="cartItems.length === 0" class="empty-cart text-center mt-6">
-    <p class="text-lg">Votre panier est vide.</p>
+    <p class="text-lg">Your cart is empty.</p>
   </div>
 
   <div *ngIf="cartItems.length > 0" class="cart-items mt-6">
@@ -15,19 +15,19 @@
           <img [src]="item.image" alt="{{ item.name }}" class="w-20 h-20 object-cover rounded-lg mr-4">
           <div>
             <h2 class="text-lg font-semibold">{{ item.name }}</h2>
-            <p class="text-sm text-gray-600">Prix : {{ item.price }}€</p> <!-- Remplacé le pipe currency par € -->
+            <p class="text-sm text-gray-600">Price: {{ item.price }}€</p> <!-- Replaced the currency pipe with € -->
           </div>
         </div>
         <button (click)="removeItem(item)" class="bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600 transition">
-          Supprimer
+          Remove
         </button>
       </div>
     </div>
 
     <div class="total mt-6 flex justify-between items-center">
-      <p class="text-lg font-semibold">Total : {{ total }}€</p> <!-- Remplacé le pipe currency par € -->
+      <p class="text-lg font-semibold">Total: {{ total }}€</p> <!-- Replaced the currency pipe with € -->
       <button class="bg-green-500 text-white py-2 px-6 rounded-lg hover:bg-green-600 transition">
-        Passer à la caisse
+        Checkout
       </button>
     </div>
   </div>

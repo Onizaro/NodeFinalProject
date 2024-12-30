@@ -1,34 +1,37 @@
 <div class="homepage-container bg-gray-50 text-stone-900">
   <!-- Hero Section -->
   <div class="hero flex flex-col items-center justify-center text-center p-12 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 text-white">
-    <h1 class="text-4xl font-bold mb-4">Bienvenue dans notre boutique en ligne</h1>
-    <p class="text-lg mb-6">Découvrez nos collections pour Hommes, Femmes et Enfants</p>
-    <a routerLink="/shop" class="px-6 py-3 bg-white text-purple-500 rounded-lg shadow-md hover:bg-gray-100 transition">Explorer</a>
+    <h1 class="text-4xl font-bold mb-4">Welcome to our online store</h1>
+    <p class="text-lg mb-6">Discover our collections for Men, Women, and Kids</p>
   </div>
 
   <!-- Categories Section -->
   <div class="categories grid grid-cols-1 md:grid-cols-3 gap-6 p-6">
-    <a routerLink="/homme" class="category-card block p-6 rounded-lg shadow-lg bg-white hover:shadow-xl transition">
-      <img src="assets/homme.jpg" alt="Homme" class="w-full h-40 object-cover rounded-t-lg">
+    <a href="/men" class="category-card block p-6 rounded-lg shadow-lg bg-white hover:shadow-xl transition">
+      <div class="flex justify-center items-center">
+        <img src="assets/men.png" alt="Men" class="w-[220px] h-[400px] object-contain rounded-t-lg" />
+      </div>
       <div class="text-center mt-4">
-        <h2 class="text-xl font-semibold">Homme</h2>
-        <p class="text-sm text-gray-600">Découvrez notre gamme pour Hommes</p>
+        <h2 class="text-xl font-semibold">Men</h2>
+        <p class="text-sm text-gray-600">Explore our collection for Men</p>
       </div>
     </a>
-    <a routerLink="/femme" class="category-card block p-6 rounded-lg shadow-lg bg-white hover:shadow-xl transition">
-      <img src="assets/femme.jpg" alt="Femme" class="w-full h-40 object-cover rounded-t-lg">
-      <div class="text-center mt-4">
-        <h2 class="text-xl font-semibold">Femme</h2>
-        <p class="text-sm text-gray-600">Découvrez notre gamme pour Femmes</p>
+    <a href="/women" class="category-card block p-6 rounded-lg shadow-lg bg-white hover:shadow-xl transition">
+      <div class="flex justify-center items-center">
+        <img src="assets/women.png" alt="Men" class="w-[220px] h-[400px] object-contain rounded-t-lg" />
+      </div>      <div class="text-center mt-4">
+        <h2 class="text-xl font-semibold">Women</h2>
+        <p class="text-sm text-gray-600">Explore our collection for Women</p>
       </div>
     </a>
-    <a routerLink="/enfant" class="category-card block p-6 rounded-lg shadow-lg bg-white hover:shadow-xl transition">
-      <img src="assets/enfant.jpg" alt="Enfant" class="w-full h-40 object-cover rounded-t-lg">
+    <a href="/kids" class="category-card block p-6 rounded-lg shadow-lg bg-white hover:shadow-xl transition">
+      <div class="flex justify-center items-center">
+        <img src="assets/kids.png" alt="Men" class="w-[220px] h-[400px] object-contain rounded-t-lg" />
+      </div>
       <div class="text-center mt-4">
-        <h2 class="text-xl font-semibold">Enfants</h2>
-        <p class="text-sm text-gray-600">Découvrez notre gamme pour Enfants</p>
+        <h2 class="text-xl font-semibold">Kids</h2>
+        <p class="text-sm text-gray-600">Explore our collection for Kids</p>
       </div>
     </a>
   </div>
 </div>
-
