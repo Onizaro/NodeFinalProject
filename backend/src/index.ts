@@ -1,4 +1,5 @@
 import express, { Application } from 'express';
+import cors from 'cors'; // Importer le middleware cors
 import swaggerUi from 'swagger-ui-express';
 import swaggerSpec from './swagger'; // Swagger setup
 import { sequelize } from './models'; // Sequelize instance
@@ -11,6 +12,11 @@ const app: Application = express();
 const PORT: number = 3000;
 
 // Middleware
+app.use(cors({
+    origin: 'http://localhost:4200', // Remplacer par l'origine de votre frontend
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Méthodes autorisées
+    allowedHeaders: ['Content-Type', 'Authorization'] // En-têtes autorisés
+}));
 app.use(express.json());
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec)); // Swagger UI setup
 
