@@ -41,7 +41,7 @@ backend/
 ### Setup Instructions
 1. Clone the repository:
    ```bash
-   git clone [repository-url]
+   git clone https://github.com/Onizaro/NodeFinalProject.git
    cd backend
    ```
 
@@ -55,7 +55,7 @@ backend/
 
 4. Run the database setup script (if required):
    ```bash
-   psql -U [username] -d [database_name] -f setup.sql
+   psql -U [username] -d postgresql -f setup.sql
    ```
 
 5. Start the server:
