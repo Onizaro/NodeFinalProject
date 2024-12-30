@@ -1,3 +1,2 @@
-test 
-ok j'essaie
-code
+
+il y a un README pour le Frontend et un README pour le Backend
