@@ -1,27 +1,52 @@
 import { Router } from 'express';
-import { User } from '../models/User';
 
 const router = Router();
 
-// Register a user
-router.post('/register', async (req, res) => {
-    try {
-        const user = await User.create(req.body);
-        res.status(201).json(user);
-    } catch (error) {
-        res.status(400).json({ error: error.message });
-    }
+/**
+ * @swagger
+ * /api/users:
+ *   get:
+ *     summary: Get all users
+ *     responses:
+ *       200:
+ *         description: List of users
+ */
+router.get('/', (req, res) => {
+    res.send('Get all users');
 });
 
-// Authenticate user
-router.post('/login', async (req, res) => {
-    const { email, password } = req.body;
-    const user = await User.findOne({ where: { email, password } });
-    if (user) {
-        res.json(user);
-    } else {
-        res.status(401).json({ error: 'Invalid credentials' });
-    }
+/**
+ * @swagger
+ * /api/users/{id}:
+ *   get:
+ *     summary: Get user by ID
+ *     parameters:
+ *       - name: id
+ *         in: path
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     responses:
+ *       200:
+ *         description: User details
+ *       404:
+ *         description: User not found
+ */
+router.get('/:id', (req, res) => {
+    res.send(`Get user with ID ${req.params.id}`);
+});
+
+/**
+ * @swagger
+ * /api/users:
+ *   post:
+ *     summary: Create a new user
+ *     responses:
+ *       201:
+ *         description: User created
+ */
+router.post('/', (req, res) => {
+    res.send('Create new user');
 });
 
 export default router;

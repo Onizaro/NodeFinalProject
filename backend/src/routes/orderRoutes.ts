@@ -1,22 +1,31 @@
 import { Router } from 'express';
-import { Order } from '../models/Order';
 
 const router = Router();
 
-// Get orders for a user
-router.get('/:userId', async (req, res) => {
-    const orders = await Order.findAll({ where: { userId: req.params.userId } });
-    res.json(orders);
+/**
+ * @swagger
+ * /api/orders:
+ *   get:
+ *     summary: Get all orders
+ *     responses:
+ *       200:
+ *         description: List of orders
+ */
+router.get('/', (req, res) => {
+    res.send('Get all orders');
 });
 
-// Create an order
-router.post('/', async (req, res) => {
-    try {
-        const order = await Order.create(req.body);
-        res.status(201).json(order);
-    } catch (error) {
-        res.status(400).json({ error: error.message });
-    }
+/**
+ * @swagger
+ * /api/orders:
+ *   post:
+ *     summary: Create a new order
+ *     responses:
+ *       201:
+ *         description: Order created
+ */
+router.post('/', (req, res) => {
+    res.send('Create new order');
 });
 
 export default router;
