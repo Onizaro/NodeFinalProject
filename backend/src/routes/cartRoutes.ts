@@ -118,4 +118,42 @@ router.post('/', async (req: Request, res: Response): Promise<void> => {
     }
 });
 
+/**
+ * @swagger
+ * /api/cart/{id}:
+ *   delete:
+ *     summary: Delete an item from the cart
+ *     parameters:
+ *       - name: id
+ *         in: path
+ *         description: ID of the cart item to remove
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     responses:
+ *       200:
+ *         description: Item removed from cart
+ *       404:
+ *         description: Item not found
+ */
+router.delete('/:id', async (req: Request, res: Response): Promise<void> => {
+    const { id } = req.params;
+
+    try {
+        // Find the cart item by ID
+        const cartItem = await Cart.findByPk(id);
+
+        if (!cartItem) {
+            res.status(404).send({ error: 'Cart item not found' });
+            return;
+        }
+
+        // Delete the cart item
+        await cartItem.destroy();
+        res.status(200).send({ message: 'Item removed from cart' });
+    } catch (error) {
+        res.status(500).send({ error: 'Failed to remove item from cart' });
+    }
+});
+
 export default router;
