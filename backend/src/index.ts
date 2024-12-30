@@ -1,24 +1,34 @@
 import express, { Application } from 'express';
-import cors from 'cors'; // Importer le middleware cors
+import cors from 'cors';
 import swaggerUi from 'swagger-ui-express';
 import swaggerSpec from './swagger'; // Swagger setup
-import { sequelize } from './models'; // Sequelize instance
+import { Sequelize } from 'sequelize'; // Sequelize for DB connection
 import productRoutes from './routes/productRoutes';
 import userRoutes from './routes/userRoutes';
 import cartRoutes from './routes/cartRoutes';
 import orderRoutes from './routes/orderRoutes';
+import dotenv from 'dotenv';
+
+// Load environment variables
+dotenv.config();
 
 const app: Application = express();
-const PORT: number = 3000;
+const PORT: number = parseInt(process.env.PORT || '3000', 10);
+
+// Database setup
+const sequelize = new Sequelize(process.env.DATABASE_URL || '', {
+    dialect: 'postgres',
+    logging: console.log,
+});
 
 // Middleware
 app.use(cors({
-    origin: 'http://localhost:4200', // Remplacer par l'origine de votre frontend
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Méthodes autorisées
-    allowedHeaders: ['Content-Type', 'Authorization'] // En-têtes autorisés
+    origin: process.env.CLIENT_ORIGIN || 'http://localhost:4200',
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
 }));
 app.use(express.json());
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec)); // Swagger UI setup
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // Routes
 app.use('/api/products', productRoutes);
@@ -31,13 +41,13 @@ app.use('/api/orders', orderRoutes);
     try {
         await sequelize.authenticate();
         console.log('Database connected successfully.');
-        await sequelize.sync({ alter: true }); // Create tables dynamically if missing
+        await sequelize.sync({ alter: true }); // Sync database schema dynamically
 
         app.listen(PORT, (): void => {
             console.log(`Server running at http://localhost:${PORT}`);
-            console.log(`Swagger API docs at http://localhost:${PORT}/api-docs`);
+            console.log(`Swagger API docs available at http://localhost:${PORT}/api-docs`);
         });
-    } catch (error: unknown) {
+    } catch (error) {
         console.error('Unable to connect to the database:', error);
     }
 })();
