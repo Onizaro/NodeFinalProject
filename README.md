@@ -1,2 +1,2 @@
 
-il y a un README pour le Frontend et un README pour le Backend
+There is a README for the Frontend and a README for the Backend.
