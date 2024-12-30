@@ -1,5 +1,5 @@
 import { Router, Request, Response } from 'express';
-import {User} from "../models/User";
+import { User } from "../models/User";
 
 const router = Router();
 
@@ -12,8 +12,13 @@ const router = Router();
  *       200:
  *         description: List of users
  */
-router.get('/', (req: Request, res: Response): void => {
-    res.send('Get all users');
+router.get('/', async (req: Request, res: Response): Promise<void> => {
+    try {
+        const users = await User.findAll(); // Fetch all users from the database
+        res.status(200).send(users); // Send the list of users as the response
+    } catch (error) {
+        res.status(500).send({ error: 'Internal Server Error' });
+    }
 });
 
 /**
@@ -33,9 +38,18 @@ router.get('/', (req: Request, res: Response): void => {
  *       404:
  *         description: User not found
  */
-router.get('/:id', (req: Request<{ id: string }>, res: Response): void => {
+router.get('/:id', async (req: Request<{ id: string }>, res: Response): Promise<void> => {
     const { id } = req.params;
-    res.send(`Get user with ID ${id}`);
+    try {
+        const user = await User.findByPk(id); // Find the user by primary key (ID)
+        if (user) {
+            res.status(200).send(user); // If user found, send user data
+        } else {
+            res.status(404).send({ error: 'User not found' }); // User not found
+        }
+    } catch (error) {
+        res.status(500).send({ error: 'Internal Server Error' });
+    }
 });
 
 /**
@@ -80,6 +94,5 @@ router.post('/', async (req: Request, res: Response): Promise<void> => {
         res.status(500).send({ error: 'Internal Server Error' });
     }
 });
-
 
 export default router;
