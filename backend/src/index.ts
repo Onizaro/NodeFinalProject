@@ -11,6 +11,10 @@ import dotenv from 'dotenv';
 
 // Load environment variables
 dotenv.config();
+if (!process.env.DATABASE_URL) {
+    throw new Error('DATABASE_URL is not defined in the environment variables.');
+}
+
 
 const app: Application = express();
 const PORT: number = parseInt(process.env.PORT || '3000', 10);
@@ -18,8 +22,15 @@ const PORT: number = parseInt(process.env.PORT || '3000', 10);
 // Database setup
 const sequelize = new Sequelize(process.env.DATABASE_URL || '', {
     dialect: 'postgres',
-    logging: console.log,
+    dialectOptions: {
+        ssl: {
+            require: true,
+            rejectUnauthorized: false, // Allows self-signed certificates
+        },
+    },
+    logging: console.log, // Enables SQL query logging
 });
+
 
 // Middleware
 app.use(cors({
@@ -36,6 +47,7 @@ app.use('/api/users', userRoutes);
 app.use('/api/cart', cartRoutes);
 app.use('/api/orders', orderRoutes);
 
+
 // Start server and connect to database
 (async (): Promise<void> => {
     try {
@@ -51,3 +63,4 @@ app.use('/api/orders', orderRoutes);
         console.error('Unable to connect to the database:', error);
     }
 })();
+console.log('Database URL:', process.env.DATABASE_URL);
