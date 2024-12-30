@@ -75,6 +75,7 @@ This page lists all available endpoints with their request and response structur
 #### Products
 - **GET** `/api/products` - Retrieve all products
 ![image](https://github.com/user-attachments/assets/7a21e5b6-3127-421a-8fd5-92d339b069c9)
+
 - **POST** `/api/products` - Add a new product
 ![image](https://github.com/user-attachments/assets/260c93cf-add7-4850-9146-46a94a09dfcf)
 
@@ -97,8 +98,10 @@ This page lists all available endpoints with their request and response structur
 #### Cart
 - **GET** `/api/cart` - Retrieve cart items
   ![image](https://github.com/user-attachments/assets/9039ee37-426f-4eab-94dc-16f7fab0f348)
+  
 - **POST** `/api/cart` - Add items to the cart
   ![image](https://github.com/user-attachments/assets/6190150e-3f7c-4721-a9a7-0d3859d8675c)
+  
 - **DELETE** `/api/cart/:id` - Remove items from the cart
 
 #### Orders
