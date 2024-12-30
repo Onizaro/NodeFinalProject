@@ -1,19 +1,64 @@
 <div class="update-page">
-  <h1>Ajouter un produit</h1>
+  <h1 class="title">Ajouter un produit</h1>
 
-  <form (submit)="onSubmit()">
-    <label for="productId">ID</label>
-    <input type="number" id="productId" [(ngModel)]="productId" name="productId" required />
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()" class="form-container">
 
-    <label for="productName">Nom</label>
-    <input type="text" id="productName" [(ngModel)]="productName" name="productName" required />
 
-    <label for="productPrice">Prix</label>
-    <input type="number" id="productPrice" [(ngModel)]="productPrice" name="productPrice" required />
+    <div class="form-group">
+      <label for="productName">Nom</label>
+      <input type="text" id="productName" formControlName="productName" required class="form-input" />
+    </div>
 
-    <label for="productDescription">Description</label>
-    <input type="text" id="productDescription" [(ngModel)]="productDescription" name="productDescription" required />
+    <div class="form-group">
+      <label for="productPrice">Prix</label>
+      <input type="number" id="productPrice" formControlName="productPrice" required class="form-input" />
+    </div>
 
-    <button type="submit">Ajouter le produit</button>
+    <div class="form-group">
+      <label for="productDescription">Description</label>
+      <input type="text" id="productDescription" formControlName="productDescription" required class="form-input" />
+    </div>
+
+    <button type="submit" [disabled]="!productForm.valid" class="submit-button">Ajouter le produit</button>
   </form>
+
+  <hr />
+
+  <!-- Liste des produits existants -->
+  <h2 class="title">Produits existants</h2>
+  <div *ngIf="products.length > 0">
+    <div class="products-list">
+      <div *ngFor="let product of products; let i = index" class="product-item">
+        <div class="product-details">
+          <strong>{{ product.name }}</strong><br />
+          ID: {{ product.id }}<br />
+          Prix: {{ product.price }}€<br />
+          Description: {{ product.description }}
+        </div>
+
+        <form [formGroup]="editForm[i]" (ngSubmit)="onEditSubmit(product.id, i)" class="edit-form">
+          <div class="form-group">
+            <label for="editName{{ product.id }}">Nom</label>
+            <input type="text" id="editName{{ product.id }}" formControlName="productName" class="form-input" />
+          </div>
+
+          <div class="form-group">
+            <label for="editPrice{{ product.id }}">Prix</label>
+            <input type="number" id="editPrice{{ product.id }}" formControlName="productPrice" class="form-input" />
+          </div>
+
+          <div class="form-group">
+            <label for="editDescription{{ product.id }}">Description</label>
+            <input type="text" id="editDescription{{ product.id }}" formControlName="productDescription" class="form-input" />
+          </div>
+
+          <button type="submit" [disabled]="!editForm[i].valid" class="submit-button">Modifier</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="products.length === 0">
+    <p>Aucun produit disponible.</p>
+  </div>
 </div>

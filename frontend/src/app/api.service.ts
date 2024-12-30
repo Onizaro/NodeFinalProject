@@ -44,4 +44,17 @@ export class ApiService {
   getUsers(): Observable<any> {
     return this.http.get(`${this.baseUrl}/users`);
   }
+
+  addToCart(cartItem: { userId: number, productId: number, quantity: number }): Observable<any> {
+    return this.http.post(`${this.baseUrl}/cart`, cartItem);
+  }
+
+  getCartItems(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/cart`);
+  }
+
+  removeCartItem(itemId: number): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/cart/${itemId}`);
+  }
+
 }

@@ -1,32 +1,36 @@
 <div class="cart-page-container bg-gray-50 text-stone-900 p-6">
+  <!-- Header Section -->
   <div class="cart-header text-center p-12 bg-blue-400 text-white rounded-lg">
     <h1 class="text-4xl font-bold mb-4">Your Cart</h1>
     <p class="text-lg">Review and manage the items in your cart</p>
   </div>
 
+  <!-- Empty Cart Message -->
   <div *ngIf="cartItems.length === 0" class="empty-cart text-center mt-6">
     <p class="text-lg">Your cart is empty.</p>
   </div>
 
+  <!-- Cart Items Section -->
   <div *ngIf="cartItems.length > 0" class="cart-items mt-6">
     <div *ngFor="let item of cartItems" class="cart-item bg-white p-4 rounded-lg shadow hover:shadow-lg transition mb-4">
       <div class="flex items-center justify-between">
         <div class="flex items-center">
-          <img [src]="item.image" alt="{{ item.name }}" class="w-20 h-20 object-cover rounded-lg mr-4">
+          <img [src]="item.imageUrl" alt="{{ item.name }}" class="w-20 h-20 object-cover rounded-lg mr-4">
           <div>
             <h2 class="text-lg font-semibold">{{ item.name }}</h2>
-            <p class="text-sm text-gray-600">Price: {{ item.price }}€</p> <!-- Replaced the currency pipe with € -->
+            <p class="text-sm text-gray-600">Price: {{ item.price }}€</p>
           </div>
         </div>
-        <button (click)="removeItem(item)" class="bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600 transition">
+        <button (click)="removeFromCart(item.id)" class="bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600 transition">
           Remove
         </button>
       </div>
     </div>
 
+    <!-- Total and Checkout Section -->
     <div class="total mt-6 flex justify-between items-center">
-      <p class="text-lg font-semibold">Total: {{ total }}€</p> <!-- Replaced the currency pipe with € -->
-      <button class="bg-green-500 text-white py-2 px-6 rounded-lg hover:bg-green-600 transition">
+      <p class="text-lg font-semibold">Total: {{ total }}€</p>
+      <button (click)="checkout()" class="bg-green-500 text-white py-2 px-6 rounded-lg hover:bg-green-600 transition">
         Checkout
       </button>
     </div>

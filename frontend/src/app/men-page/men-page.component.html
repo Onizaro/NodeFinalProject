@@ -7,42 +7,11 @@
 
   <!-- Product Grid -->
   <div class="product-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-6">
-    <div class="product-card bg-white p-4 rounded-lg shadow hover:shadow-lg transition">
-      <img src="../assets/men/shirt1.jpg" alt="Chemise Classique" class="w-full h-40 object-cover rounded-lg mb-4">
-      <h2 class="text-lg font-semibold">Chemise Classique</h2>
-      <p class="text-sm text-gray-600">Prix : 29.99€</p>
-      <button class="mt-4 w-full bg-amber-300 text-white py-2 rounded-lg hover:bg-amber-500 transition">Ajouter au panier</button>
+    <div *ngFor="let product of menProducts" class="product-card bg-white p-4 rounded-lg shadow hover:shadow-lg transition">
+      <img [src]="product.imageUrl" alt="{{ product.name }}" class="w-full h-40 object-cover rounded-lg mb-4">
+      <h2 class="text-lg font-semibold">{{ product.name }}</h2>
+      <p class="text-sm text-gray-600">Prix : {{ product.price }}€</p>
+      <button class="mt-4 w-full bg-amber-300 text-white py-2 rounded-lg hover:bg-amber-500 transition" (click)="addToCart(product.id, 1)">Ajouter au panier</button>
     </div>
-    <div class="product-card bg-white p-4 rounded-lg shadow hover:shadow-lg transition">
-      <img src="../assets/men/shoes1.jpg" alt="Chaussures Élégantes" class="w-full h-40 object-cover rounded-lg mb-4">
-      <h2 class="text-lg font-semibold">Chaussures Élégantes</h2>
-      <p class="text-sm text-gray-600">Prix : 49.99€</p>
-      <button class="mt-4 w-full bg-amber-300 text-white py-2 rounded-lg hover:bg-amber-500 transition">Ajouter au panier</button>
-    </div>
-    <div class="product-card bg-white p-4 rounded-lg shadow hover:shadow-lg transition">
-      <img src="../assets/men/shoes1.jpg" alt="Chaussures Élégantes" class="w-full h-40 object-cover rounded-lg mb-4">
-      <h2 class="text-lg font-semibold">Chaussures Élégantes</h2>
-      <p class="text-sm text-gray-600">Prix : 49.99€</p>
-      <button class="mt-4 w-full bg-amber-300 text-white py-2 rounded-lg hover:bg-amber-500 transition">Ajouter au panier</button>
-    </div>
-    <div class="product-card bg-white p-4 rounded-lg shadow hover:shadow-lg transition">
-      <img src="../assets/men/shoes1.jpg" alt="Chaussures Élégantes" class="w-full h-40 object-cover rounded-lg mb-4">
-      <h2 class="text-lg font-semibold">Chaussures Élégantes</h2>
-      <p class="text-sm text-gray-600">Prix : 49.99€</p>
-      <button class="mt-4 w-full bg-amber-300 text-white py-2 rounded-lg hover:bg-amber-500 transition">Ajouter au panier</button>
-    </div>
-    <div class="product-card bg-white p-4 rounded-lg shadow hover:shadow-lg transition">
-      <img src="../assets/men/shoes1.jpg" alt="Chaussures Élégantes" class="w-full h-40 object-cover rounded-lg mb-4">
-      <h2 class="text-lg font-semibold">Chaussures Élégantes</h2>
-      <p class="text-sm text-gray-600">Prix : 49.99€</p>
-      <button class="mt-4 w-full bg-amber-300 text-white py-2 rounded-lg hover:bg-amber-500 transition">Ajouter au panier</button>
-    </div>
-    <div class="product-card bg-white p-4 rounded-lg shadow hover:shadow-lg transition">
-      <img src="../assets/men/shoes1.jpg" alt="Chaussures Élégantes" class="w-full h-40 object-cover rounded-lg mb-4">
-      <h2 class="text-lg font-semibold">Chaussures Élégantes</h2>
-      <p class="text-sm text-gray-600">Prix : 49.99€</p>
-      <button class="mt-4 w-full bg-amber-300 text-white py-2 rounded-lg hover:bg-amber-500 transition">Ajouter au panier</button>
-    </div>
-    <!-- Ajoutez d'autres produits ici -->
   </div>
 </div>
