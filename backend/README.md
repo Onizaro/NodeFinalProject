@@ -74,22 +74,28 @@ This page lists all available endpoints with their request and response structur
 ### Key Endpoints
 #### Products
 - **GET** `/api/products` - Retrieve all products
+  
 ![image](https://github.com/user-attachments/assets/7a21e5b6-3127-421a-8fd5-92d339b069c9)
 
 - **POST** `/api/products` - Add a new product
+  
 ![image](https://github.com/user-attachments/assets/260c93cf-add7-4850-9146-46a94a09dfcf)
 
 - **PUT** `/api/products/:id` - Update a product
+  
 ![image](https://github.com/user-attachments/assets/e322fab9-888d-4475-99a2-608e68b29d73)
 
 - **DELETE** `/api/products/:id` - Delete a product
+  
 ![image](https://github.com/user-attachments/assets/6ec104f8-2056-4fee-b340-b7195438c2da)
  
 #### Users
 - **GET** `/api/users` - Retrieve all users
+  
 ![image](https://github.com/user-attachments/assets/7f2f3d9b-575f-4cac-8729-681195d93030)
 
 - **POST** `/api/users` - Add a new user
+  
 ![image](https://github.com/user-attachments/assets/c1a14918-4af8-4cb0-bfe8-47cc033a2e4f)
 
 - **PUT** `/api/users/:id` - Update a user
@@ -97,18 +103,22 @@ This page lists all available endpoints with their request and response structur
 
 #### Cart
 - **GET** `/api/cart` - Retrieve cart items
+  
 ![image](https://github.com/user-attachments/assets/9039ee37-426f-4eab-94dc-16f7fab0f348)
   
 - **POST** `/api/cart` - Add items to the cart
+  
 ![image](https://github.com/user-attachments/assets/6190150e-3f7c-4721-a9a7-0d3859d8675c)
   
 - **DELETE** `/api/cart/:id` - Remove items from the cart
 
 #### Orders
 - **GET** `/api/orders` - Retrieve all orders
+  
 ![image](https://github.com/user-attachments/assets/d34a84ee-1767-4d10-917f-f128760ec728)
 
 - **POST** `/api/orders` - Create a new order
+  
 ![image](https://github.com/user-attachments/assets/1891b7ff-0ac9-4848-ae20-fc565ceb9b1a)
 
 
