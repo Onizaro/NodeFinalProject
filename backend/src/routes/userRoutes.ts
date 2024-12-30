@@ -1,4 +1,4 @@
-import { Router } from 'express';
+import { Router, Request, Response } from 'express';
 
 const router = Router();
 
@@ -11,7 +11,7 @@ const router = Router();
  *       200:
  *         description: List of users
  */
-router.get('/', (req, res) => {
+router.get('/', (req: Request, res: Response): void => {
     res.send('Get all users');
 });
 
@@ -32,8 +32,9 @@ router.get('/', (req, res) => {
  *       404:
  *         description: User not found
  */
-router.get('/:id', (req, res) => {
-    res.send(`Get user with ID ${req.params.id}`);
+router.get('/:id', (req: Request<{ id: string }>, res: Response): void => {
+    const { id } = req.params;
+    res.send(`Get user with ID ${id}`);
 });
 
 /**
@@ -45,7 +46,7 @@ router.get('/:id', (req, res) => {
  *       201:
  *         description: User created
  */
-router.post('/', (req, res) => {
+router.post('/', (req: Request, res: Response): void => {
     res.send('Create new user');
 });
 

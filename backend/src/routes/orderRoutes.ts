@@ -1,4 +1,4 @@
-import { Router } from 'express';
+import { Router, Request, Response } from 'express';
 
 const router = Router();
 
@@ -11,7 +11,7 @@ const router = Router();
  *       200:
  *         description: List of orders
  */
-router.get('/', (req, res) => {
+router.get('/', (req: Request, res: Response): void => {
     res.send('Get all orders');
 });
 
@@ -24,7 +24,7 @@ router.get('/', (req, res) => {
  *       201:
  *         description: Order created
  */
-router.post('/', (req, res) => {
+router.post('/', (req: Request, res: Response): void => {
     res.send('Create new order');
 });
 

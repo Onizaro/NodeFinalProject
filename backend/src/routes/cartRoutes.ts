@@ -1,4 +1,4 @@
-import { Router } from 'express';
+import { Router, Request, Response } from 'express';
 
 const router = Router();
 
@@ -11,7 +11,7 @@ const router = Router();
  *       200:
  *         description: List of cart items
  */
-router.get('/', (req, res) => {
+router.get('/', (req: Request, res: Response): void => {
     res.send('Get all cart items');
 });
 
@@ -24,7 +24,7 @@ router.get('/', (req, res) => {
  *       201:
  *         description: Item added to cart
  */
-router.post('/', (req, res) => {
+router.post('/', (req: Request, res: Response): void => {
     res.send('Add item to cart');
 });
 

@@ -8,7 +8,7 @@ import cartRoutes from './routes/cartRoutes';
 import orderRoutes from './routes/orderRoutes';
 
 const app: Application = express();
-const PORT = 3000;
+const PORT: number = 3000;
 
 // Middleware
 app.use(express.json());
@@ -21,17 +21,17 @@ app.use('/api/cart', cartRoutes);
 app.use('/api/orders', orderRoutes);
 
 // Start server and connect to database
-(async () => {
+(async (): Promise<void> => {
     try {
         await sequelize.authenticate();
         console.log('Database connected successfully.');
         await sequelize.sync({ alter: true }); // Create tables dynamically if missing
 
-        app.listen(PORT, () => {
+        app.listen(PORT, (): void => {
             console.log(`Server running at http://localhost:${PORT}`);
             console.log(`Swagger API docs at http://localhost:${PORT}/api-docs`);
         });
-    } catch (error) {
+    } catch (error: unknown) {
         console.error('Unable to connect to the database:', error);
     }
 })();

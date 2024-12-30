@@ -1,5 +1,4 @@
-
-import { Router } from 'express';
+import { Router, Request, Response } from 'express';
 import { Product } from '../models/Product';
 
 const router = Router();
@@ -13,9 +12,13 @@ const router = Router();
  *       200:
  *         description: List of products
  */
-router.get('/', async (req, res) => {
-    const products = await Product.findAll();
-    res.json(products);
+router.get('/', async (req: Request, res: Response) => {
+    try {
+        const products = await Product.findAll();
+        res.json(products);
+    } catch (error: any) {
+        res.status(500).json({ error: error.message });
+    }
 });
 
 /**
@@ -35,12 +38,16 @@ router.get('/', async (req, res) => {
  *       404:
  *         description: Product not found
  */
-router.get('/:id', async (req, res) => {
-    const product = await Product.findByPk(req.params.id);
-    if (product) {
-        res.json(product);
-    } else {
-        res.status(404).json({ error: 'Product not found' });
+router.get('/:id', async (req: Request<{ id: string }>, res: Response) => {
+    try {
+        const product = await Product.findByPk(req.params.id);
+        if (product) {
+            res.json(product);
+        } else {
+            res.status(404).json({ error: 'Product not found' });
+        }
+    } catch (error: any) {
+        res.status(500).json({ error: error.message });
     }
 });
 
@@ -68,11 +75,11 @@ router.get('/:id', async (req, res) => {
  *       201:
  *         description: Product created
  */
-router.post('/', async (req, res) => {
+router.post('/', async (req: Request, res: Response) => {
     try {
         const product = await Product.create(req.body);
         res.status(201).json(product);
-    } catch (error) {
+    } catch (error: any) {
         res.status(400).json({ error: error.message });
     }
 });
@@ -109,7 +116,7 @@ router.post('/', async (req, res) => {
  *       404:
  *         description: Product not found
  */
-router.put('/:id', async (req, res) => {
+router.put('/:id', async (req: Request<{ id: string }>, res: Response) => {
     try {
         const product = await Product.findByPk(req.params.id);
         if (product) {
@@ -118,7 +125,7 @@ router.put('/:id', async (req, res) => {
         } else {
             res.status(404).json({ error: 'Product not found' });
         }
-    } catch (error) {
+    } catch (error: any) {
         res.status(400).json({ error: error.message });
     }
 });
@@ -140,13 +147,17 @@ router.put('/:id', async (req, res) => {
  *       404:
  *         description: Product not found
  */
-router.delete('/:id', async (req, res) => {
-    const product = await Product.findByPk(req.params.id);
-    if (product) {
-        await product.destroy();
-        res.json({ message: 'Product deleted successfully' });
-    } else {
-        res.status(404).json({ error: 'Product not found' });
+router.delete('/:id', async (req: Request<{ id: string }>, res: Response) => {
+    try {
+        const product = await Product.findByPk(req.params.id);
+        if (product) {
+            await product.destroy();
+            res.json({ message: 'Product deleted successfully' });
+        } else {
+            res.status(404).json({ error: 'Product not found' });
+        }
+    } catch (error: any) {
+        res.status(500).json({ error: error.message });
     }
 });
 
