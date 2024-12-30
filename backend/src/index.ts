@@ -1,7 +1,7 @@
 import express, { Application } from 'express';
 import swaggerUi from 'swagger-ui-express';
+import swaggerSpec from './swagger'; // Swagger setup
 import { sequelize } from './models'; // Sequelize instance
-import swaggerDocument from './swagger.json';
 import productRoutes from './routes/productRoutes';
 import userRoutes from './routes/userRoutes';
 import cartRoutes from './routes/cartRoutes';
@@ -12,7 +12,7 @@ const PORT = 3000;
 
 // Middleware
 app.use(express.json());
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec)); // Swagger UI setup
 
 // Routes
 app.use('/api/products', productRoutes);
