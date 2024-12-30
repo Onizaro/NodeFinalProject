@@ -1,0 +1,22 @@
+<div class="login-page">
+  <h1>Login Page</h1>
+
+  <!-- Login form -->
+  <form (submit)="onLogin($event)">
+    <h2>Se connecter</h2>
+    <input type="email" placeholder="Email" [(ngModel)]="loginEmail" name="loginEmail" required />
+    <input type="password" placeholder="Mot de passe" [(ngModel)]="loginPassword" name="loginPassword" required />
+    <button type="submit">Se connecter</button>
+  </form>
+
+  <hr />
+
+  <!-- Formulaire de création de compte -->
+  <form (submit)="onCreateAccount($event)">
+    <h2>Créer un compte</h2>
+    <input type="text" placeholder="Nom" [(ngModel)]="registerName" name="registerName" required />
+    <input type="email" placeholder="Email" [(ngModel)]="registerEmail" name="registerEmail" required />
+    <input type="password" placeholder="Mot de passe" [(ngModel)]="registerPassword" name="registerPassword" required />
+    <button type="submit">Créer un compte</button>
+  </form>
+</div>
