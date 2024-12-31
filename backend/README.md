@@ -52,13 +52,13 @@ backend/
 
 3. Set up environment variables:
    - Copy `.env.example` to `.env` and configure database credentials and other settings.
+   - DATABASE_URL=postgresql://online_shop_owner:pXeM7zu0hNOy@ep-icy-math-a22mm3go.eu-central-1.aws.neon.tech/online_shop?sslmode=require 
+   - PORT=3000
+   - CLIENT_ORIGIN=http://localhost:4200
+   
+   
 
-4. Run the database setup script (if required):
-   ```bash
-   psql -U [username] -d postgresql -f setup.sql
-   ```
-
-5. Start the server:
+4. Start the server:
    ```bash
    npm run start
    ```
