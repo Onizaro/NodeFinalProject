@@ -29,6 +29,7 @@ export class LoginPageComponent implements OnInit{
   }
 
   // Connexion
+  // Connexion
   onLogin(event: Event) {
     event.preventDefault();
 
@@ -41,8 +42,7 @@ export class LoginPageComponent implements OnInit{
         if (user) {
           // L'utilisateur existe, maintenant vérifier le mot de passe
           if (user.password === this.loginPassword) {
-            console.log('Connexion réussie !', user);
-            alert('Connexion réussie !');
+            alert('Login successful!');
             const username = user.name; // Assurez-vous que 'name' est bien la propriété du nom de l'utilisateur
             console.log(username)
 
@@ -52,24 +52,22 @@ export class LoginPageComponent implements OnInit{
             // Mettre à jour la navbar avec le nom de l'utilisateur (exemple de redirection ou d'affichage)
             this.router.navigate(['']);
           } else {
-            console.error('Mot de passe incorrect');
-            alert('Mot de passe incorrect.');
+            console.error('Incorrect password');
+            alert('Incorrect password.');
           }
         } else {
-          console.error('Utilisateur non trouvé');
-          alert('Utilisateur non trouvé.');
+          console.error('User not found');
+          alert('User not found.');
         }
       },
       (error) => {
-        console.error('Erreur de récupération des utilisateurs :', error);
-        alert('Une erreur est survenue lors de la récupération des utilisateurs.');
+        console.error('Error retrieving users:', error);
+        alert('An error occurred while retrieving users.');
       }
     );
   }
 
-
-
-  // Création d'un compte
+// Création d'un compte
   onCreateAccount(event: Event) {
     event.preventDefault();
     const newUser = {
@@ -80,19 +78,19 @@ export class LoginPageComponent implements OnInit{
 
     this.apiService.createUser(newUser).subscribe(
       (response) => {
-        console.log('Compte créé avec succès !', response);
-        alert('Compte créé avec succès !');
+        console.log('Account successfully created!', response);
+        alert('Account successfully created!');
       },
       (error) => {
-        console.error('Erreur lors de la création du compte :', error);
-        alert('Échec de la création du compte.');
+        console.error('Error creating account:', error);
+        alert('Account creation failed.');
       }
     );
   }
 
+
   logout() {
     localStorage.removeItem('username'); // Supprimer l'utilisateur du localStorage
-    this.username = null; // Réinitialiser la variable username
-    console.log('Déconnexion effectuée');
+    this.username = null;
   }
 }

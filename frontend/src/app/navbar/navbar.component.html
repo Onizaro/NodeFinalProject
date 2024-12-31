@@ -24,14 +24,19 @@
 
     <!-- Search Bar -->
     <div class="relative hidden lg:block w-64">
-      <input placeholder="Search..." type="search" class="w-full text-stone-800 placeholder:text-stone-600 border border-stone-300 rounded-lg py-2 px-4 focus:outline-none focus:ring-2 focus:ring-stone-400" />
-      <span class="absolute top-1/2 right-3 -translate-y-1/2 text-stone-600">
-        <svg width="1.5em" height="1.5em" viewBox="0 0 24 24" stroke-width="1.5" fill="none" xmlns="http://www.w3.org/2000/svg" color="currentColor">
-          <path d="M17 17L21 21" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
-          <path d="M3 11C3 15.4183 6.58172 19 11 19C13.213 19 15.2161 18.1015 16.6644 16.6493C18.1077 15.2022 19 13.2053 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
-        </svg>
+      <input
+        placeholder="Search..." [(ngModel)]="searchTerm" (input)="onSearchChange()" type="search" class="w-full text-stone-800 placeholder:text-stone-600 border border-stone-300 rounded-lg py-2 px-4 focus:outline-none focus:ring-2 focus:ring-stone-400"
+      />
+      <span class="absolute top-1/2 right-8 -translate-y-1/2 text-stone-600">
+        <a [routerLink]="['/search']" [queryParams]="{ search: searchTerm }">
+          <svg width="1.5em" height="1.5em" viewBox="0 0 24 24" stroke-width="1.5" fill="none" xmlns="http://www.w3.org/2000/svg" color="currentColor">
+            <path d="M17 17L21 21" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M3 11C3 15.4183 6.58172 19 11 19C13.213 19 15.2161 18.1015 16.6644 16.6493C18.1077 15.2022 19 13.2053 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </a>
       </span>
     </div>
+
 
     <!-- Account and Cart -->
     <div class="hidden lg:flex items-center gap-x-4">

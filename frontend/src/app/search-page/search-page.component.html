@@ -1,0 +1,17 @@
+<div class="results-container">
+  <!-- Affichez les produits si la liste filtrée n'est pas vide -->
+  <div *ngIf="filteredProducts.length > 0" class="product-grid">
+    <div *ngFor="let product of filteredProducts" class="product-item">
+      <img [src]="product.imageUrl" alt="{{ product.name }}" class="product-image" />
+      <div class="product-info">
+        <h3 class="product-name">{{ product.name }}</h3>
+        <p class="product-price">{{ product.price }}€</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Affichez un message si aucun produit n'est trouvé -->
+  <div *ngIf="filteredProducts.length === 0" class="no-results">
+    <p>No products found matching your search.</p>
+  </div>
+</div>

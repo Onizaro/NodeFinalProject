@@ -19,18 +19,29 @@ export class MenPageComponent implements OnInit {
   ngOnInit(): void {
     // Récupérer tous les produits via l'API
     this.apiService.getProducts().subscribe(
-      (products: Product[]) => {  // Spécifier que 'products' est de type Product[]
+      (products: Product[]) => {
         // Filtrer les produits dont le nom contient "men" (et pas "women")
         this.menProducts = products.filter((product: Product) =>
           product.name.toLowerCase().includes('men') &&
           !product.name.toLowerCase().includes('women')
         );
+
+        // Ajouter l'URL de l'image pour chaque produit en remplaçant les espaces par des underscores
+        this.menProducts = this.menProducts.map((product: Product) => {
+          return {
+            ...product,
+            imageUrl: `assets/${product.name.toLowerCase().replace(/ /g, '_')}.png` // Remplacer les espaces et ajouter .png
+          };
+        });
+
+        console.log(this.menProducts);
       },
       (error) => {
         console.error('Erreur lors de la récupération des produits :', error);
       }
     );
   }
+
 
   addToCart(productId: number, quantity: number): void {
     const userId = 1;

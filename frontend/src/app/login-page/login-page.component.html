@@ -1,27 +1,27 @@
 <div class="login-page">
   <h1>Login Page</h1>
 
-  <!-- Formulaire de connexion -->
+  <!-- Login Form -->
   <form (submit)="onLogin($event)">
-    <h2>Se connecter</h2>
+    <h2>Log In</h2>
     <input type="email" placeholder="Email" [(ngModel)]="loginEmail" name="loginEmail" required />
-    <input type="password" placeholder="Mot de passe" [(ngModel)]="loginPassword" name="loginPassword" required />
-    <button type="submit">Se connecter</button>
+    <input type="password" placeholder="Password" [(ngModel)]="loginPassword" name="loginPassword" required />
+    <button type="submit">Log In</button>
   </form>
 
   <hr />
 
-  <!-- Formulaire de création de compte -->
+  <!-- Account Creation Form -->
   <form (submit)="onCreateAccount($event)">
-    <h2>Créer un compte</h2>
-    <input type="text" placeholder="Nom" [(ngModel)]="registerName" name="registerName" required />
+    <h2>Create an Account</h2>
+    <input type="text" placeholder="Name" [(ngModel)]="registerName" name="registerName" required />
     <input type="email" placeholder="Email" [(ngModel)]="registerEmail" name="registerEmail" required />
-    <input type="password" placeholder="Mot de passe" [(ngModel)]="registerPassword" name="registerPassword" required />
-    <button type="submit">Créer un compte</button>
+    <input type="password" placeholder="Password" [(ngModel)]="registerPassword" name="registerPassword" required />
+    <button type="submit">Create Account</button>
   </form>
 
-  <!-- Bouton de déconnexion, visible seulement si un utilisateur est connecté -->
+  <!-- Logout button, visible only if a user is logged in -->
   <div *ngIf="username">
-    <button (click)="logout()">Se déconnecter</button>
+    <button (click)="logout()">Log Out</button>
   </div>
 </div>

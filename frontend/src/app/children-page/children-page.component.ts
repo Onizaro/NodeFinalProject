@@ -17,16 +17,26 @@ export class ChildrenPageComponent implements OnInit {
   constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {
+    // Récupérer tous les produits via l'API
     this.apiService.getProducts().subscribe(
       (products: Product[]) => {
+        // Filtrer les produits dont le nom contient "men" (et pas "women")
         this.kidsProducts = products.filter((product: Product) =>
-          product.name.toLowerCase().includes('kids') &&
-          !product.name.toLowerCase().includes('men') &&
-          !product.name.toLowerCase().includes('women')
+          product.name.toLowerCase().includes('kids')
         );
+
+        // Ajouter l'URL de l'image pour chaque produit en remplaçant les espaces par des underscores
+        this.kidsProducts = this.kidsProducts.map((product: Product) => {
+          return {
+            ...product,
+            imageUrl: `assets/${product.name.toLowerCase().replace(/ /g, '_')}.png` // Remplacer les espaces et ajouter .png
+          };
+        });
+
+        console.log(this.kidsProducts);
       },
       (error) => {
-        console.error('Error fetching products:', error);
+        console.error('Erreur lors de la récupération des produits :', error);
       }
     );
   }
