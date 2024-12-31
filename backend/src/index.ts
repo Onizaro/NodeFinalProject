@@ -2,7 +2,7 @@ import express, { Application } from 'express';
 import cors from 'cors';
 import swaggerUi from 'swagger-ui-express';
 import swaggerSpec from './swagger'; // Swagger setup
-import { Sequelize } from 'sequelize'; // Sequelize for DB connection
+import { sequelize } from './db'; // Sequelize for DB connection
 import productRoutes from './routes/productRoutes';
 import userRoutes from './routes/userRoutes';
 import cartRoutes from './routes/cartRoutes';
@@ -18,19 +18,6 @@ if (!process.env.DATABASE_URL) {
 
 const app: Application = express();
 const PORT: number = parseInt(process.env.PORT || '3000', 10);
-
-// Database setup
-const sequelize = new Sequelize(process.env.DATABASE_URL || '', {
-    dialect: 'postgres',
-    dialectOptions: {
-        ssl: {
-            require: true,
-            rejectUnauthorized: false, // Allows self-signed certificates
-        },
-    },
-    logging: console.log, // Enables SQL query logging
-});
-
 
 // Middleware
 app.use(cors({
