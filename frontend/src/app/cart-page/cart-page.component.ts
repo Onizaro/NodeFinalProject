@@ -15,7 +15,7 @@ import { CartItem } from '../models/CartItem';
 export class CartPageComponent implements OnInit {
   cartItems: CartItem[] = [];
   total: number = 0;
-  userId: number = 1;
+  userId: number = Number(localStorage.getItem("userId"));
 
   constructor(private apiService: ApiService) {}
 
@@ -26,8 +26,9 @@ export class CartPageComponent implements OnInit {
   loadCart(): void {
     this.apiService.getCartItems().subscribe(
       (cartItems: CartItem[]) => {
+
         this.cartItems = cartItems
-          .filter(item => item.userId === this.userId)
+          .filter(item => item.User.id === this.userId)
           .map(item => ({
             ...item,
             product: item.Product
@@ -43,7 +44,6 @@ export class CartPageComponent implements OnInit {
 
   // Calculer le total du panier
   calculateTotal(): void {
-    console.log(this.cartItems[0].Product)
     this.total = this.cartItems.reduce((sum, item) => sum + (item.Product.price * item.quantity), 0);
   }
 

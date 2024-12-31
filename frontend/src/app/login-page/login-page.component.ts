@@ -26,6 +26,7 @@ export class LoginPageComponent implements OnInit{
   ngOnInit(): void {
     // Vérifier si l'utilisateur est déjà connecté au chargement du composant
     this.username = localStorage.getItem('username');
+
   }
 
   // Connexion
@@ -44,10 +45,12 @@ export class LoginPageComponent implements OnInit{
           if (user.password === this.loginPassword) {
             alert('Login successful!');
             const username = user.name; // Assurez-vous que 'name' est bien la propriété du nom de l'utilisateur
+            const userID = user.id;
             console.log(username)
 
             // Stocker le nom de l'utilisateur dans le localStorage (si nécessaire)
             localStorage.setItem('username', username);
+            localStorage.setItem('userID', userID);
 
             // Mettre à jour la navbar avec le nom de l'utilisateur (exemple de redirection ou d'affichage)
             this.router.navigate(['']);
